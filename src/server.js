@@ -15,12 +15,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors({
-  origin: (origin, callback) => {
-    const allowed = (process.env.FRONTEND_URL || '').replace(/\/+$/, '');
-    const req = (origin || '').replace(/\/+$/, '');
-    if (!origin || req === allowed) return callback(null, true);
-    callback(new Error('Not allowed by CORS'));
-  },
+  origin: [
+    'https://ecommerce-frontend-brown-beta.vercel.app',
+    'http://localhost:5173'
+  ],
   credentials: true,
 }));
 
